@@ -20,7 +20,7 @@ func (nS *newSticker) videoToWebp(ext string) ([]byte, error) {
 		return nil, err
 	}
 
-	err = exec.Command("ffmpeg", "-i", inFile, "-vf", "scale='min(512,iw)':min'(512,ih)':force_original_aspect_ratio=decrease,fps=5, pad=512:512:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse", "-loop", "0", "-c:v", "libwebp", "-fs", "500000",  outFile, "-y").Run()
+	err = exec.Command("ffmpeg", "-i", inFile, "-vf", "scale='min(512,iw)':min'(512,ih)':force_original_aspect_ratio=decrease,fps=30, pad=512:512:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse", "-loop", "0", "-c:v", "libwebp", "-quality", "10", outFile, "-y").Run()
 	if err != nil {
 		return nil, err
 	}
