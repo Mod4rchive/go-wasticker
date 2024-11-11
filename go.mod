@@ -1,4 +1,4 @@
-module github.com/arugaz/go-wasticker
+module github.com/Mod4rchive/go-wasticker
 
 go 1.18
 
